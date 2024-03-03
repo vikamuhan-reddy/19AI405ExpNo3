@@ -1,6 +1,6 @@
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: VIKAMUHAN REDDY.N</h3>
+<h3>Register Number: 212223240181</h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -53,10 +53,7 @@ As we can see that every neighbours of node 4 are visited, so move to the next n
 Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue.
 Now, Queue becomes empty, So, terminate these process of iteration.
 
-
-<hr>
 <h2>Algorithm:</h2>
-<hr>
 <ol>
   <li>Construct a Graph with Nodes and Edges</li>
  <li>Breadth First Uses Queue and iterates through the Queue for Traversal.</li>
@@ -64,12 +61,9 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 <li>Find its Successors Or neighbors and Check whether the node is visited or not.</li>
 <li>If Not Visited, add it to the Queue. Else Continue.</li>
 <li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
-
 </ol>
 
-<hr>
 <h3>Sample Input</h3>
-<hr>
 7 9 <BR>
 A B <BR>
 A C <BR>
@@ -80,16 +74,12 @@ C D <BR>
 D E <BR>
 D G <BR>
 G F <BR>
-<hr>
+A <BR>
+
 <h3>Sample Output</h3>
-<hr>
 ['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
-<hr>
-
-<hr>
 <h3>Sample Input</h3>
-<hr>
 5 6 <BR>
 0 1 <BR>
 0 2 <BR>
@@ -97,18 +87,43 @@ G F <BR>
 1 3 <BR>
 2 4 <BR>
 3 4 <BR>
-<hr>
+0 <BR>
+
 <h3>Sample Output</h3>
-<hr>
 ['0', '1', '2', '3', '4']
-<hr>
+
+## Program:
+```
+from collections import defaultdict
+from collections import deque
+def bfs(g,s,vi,p):
+    q=deque()
+    p.append(s)
+    q.append(s)
+    vi[s]=True
+    while len(q)!=0:
+        tn=q.popleft()
+        for ne in g[tn]:
+            if vi[ne]==False:
+                p.append(ne)
+                q.append(ne)
+                vi[ne]=True
+    return p
+g=defaultdict(list)
+n,e=map(int,input().split())
+for i in range(e):
+    u,v=map(str,input().split())
+    g[u].append(v)
+    g[v].append(u)
+st=input()
+vi=defaultdict(bool)
+p=[]
+tdp=bfs(g,st,vi,p)
+print(tdp)
+```
+## Output:
+![EXP 3 BFS](https://github.com/vikamuhan-reddy/19AI405ExpNo3/assets/144928933/eb061d4b-67b2-4a82-8f85-18435577b6fe)
+
+
 <h3>Result:</h3>
-<hr>
 <p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
-
-
-
-
-
-
-
